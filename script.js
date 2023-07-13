@@ -177,7 +177,7 @@ class Particle {
 
 function drawScore() {
   ctx.fillStyle = "black";
-  ctx.fillText(`Score : ` + score, 50, 75);
+  ctx.fillText(`2/Score : ` + score, 50, 75);
   ctx.fillStyle = "white";
   ctx.fillText(`Score : ` + score, 55, 80);
 }
