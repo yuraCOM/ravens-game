@@ -12,13 +12,13 @@ const COLLISION_CANVAS_WIDTH = (collisionCanvas.width = innerWidth);
 const COLLISION_CANVAS_HEIGHT = (collisionCanvas.height = innerHeight);
 
 let timeToNextRaven = 0;
-let ravenInterval = 500;
+let ravenInterval = 900;
 let lastTime = 0;
 
 let ravens = [];
 
 let score = 0;
-ctx.font = "50px Impact";
+ctx.font = "20px Impact";
 
 //class Raven -----------------------------
 class Raven {
@@ -53,7 +53,7 @@ class Raven {
       "," +
       this.randomColor[2] +
       ")";
-    this.hasTrial = Math.random() > 0; // 0.5 дым у половины
+    this.hasTrial = Math.random() > 0.5; // 0.5 дым у половины
   }
   update(deltaTime) {
     if (this.y < 0 || this.y > CANVAS_HEIGHT - this.height) {
@@ -154,7 +154,7 @@ class Particle {
     this.x = x + size / 2 + Math.random() * 50 - 25;
     this.y = y + size / 3 + Math.random() * 50 - 25;
     this.radius = (Math.random() * this.size) / 10;
-    this.maxRadius = Math.random() * 20 + 30;
+    this.maxRadius = Math.random() * 20 + 10; // длина дыма с жопы
     this.markerForDeletePar = false;
     this.speedX = Math.random() * 1 + 0.5;
     this.color = color;
