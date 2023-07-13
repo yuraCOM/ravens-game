@@ -25,7 +25,7 @@ class Raven {
   constructor(x, y) {
     this.spriteWidth = 271;
     this.spriteHeight = 194;
-    this.sizeModifier = Math.random() * 0.6 + 0.3;
+    this.sizeModifier = Math.random() * 0.2 + 0.3;
     this.width = this.spriteWidth * this.sizeModifier;
     this.height = this.spriteHeight * this.sizeModifier;
     this.x = CANVAS_WIDTH;
@@ -176,10 +176,10 @@ class Particle {
 }
 
 function drawScore() {
-  ctx.fillStyle = "black";
-  ctx.fillText(`Score : ` + score, 50, 75);
+  // ctx.fillStyle = "black";
+  // ctx.fillText(`Score : ` + score, 50, 75);
   ctx.fillStyle = "white";
-  ctx.fillText(`2/Score : ` + score, 55, 80);
+  ctx.fillText(`Score : ` + score, 20, 30);
 }
 
 window.addEventListener("click", function (event) {
@@ -196,7 +196,6 @@ window.addEventListener("click", function (event) {
       score++;
       //
       explosions.push(new Explosion(obj.x, obj.y, obj.width));
-      console.log("explosions: ", explosions);
     }
   });
 });
