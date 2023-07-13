@@ -1,4 +1,5 @@
 //
+let start = true;
 const canvas = document.getElementById("canvas1");
 const ctx = canvas.getContext("2d", { willReadFrequently: true });
 const CANVAS_WIDTH = (canvas.width = innerWidth);
@@ -219,6 +220,12 @@ window.addEventListener("touchstart", function (event) {
   });
 });
 
+window.addEventListener("dblclick", function (event) {
+  start ? (start = false) : (start = true);
+  animate(0);
+  console.log("start: ", start);
+});
+
 function animate(timestamp) {
   ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
   collisionCtx.clearRect(0, 0, COLLISION_CANVAS_WIDTH, COLLISION_CANVAS_HEIGHT);
@@ -244,7 +251,9 @@ function animate(timestamp) {
   explosions = explosions.filter((obj) => !obj.markerForDeleteExp);
   particles = particles.filter((obj) => !obj.markerForDeletePar);
 
-  requestAnimationFrame(animate);
+  if (start) {
+    requestAnimationFrame(animate);
+  }
 }
 
 animate(0);
