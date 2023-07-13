@@ -1,0 +1,34 @@
+html,
+body {
+  overflow: hidden;
+  width: 100wh;
+  height: 100vh;
+  /* box-sizing: border-box; */
+  margin: 0;
+  padding: 0;
+  cursor: crosshair;
+}
+
+/* main {
+  height: 98vh;
+} */
+
+#canvas1 {
+  /* background: linear-gradient(to bottom left, #cc99ff 0%, #ff99cc 100%); */
+  background: linear-gradient(to bottom, red, green, blue);
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* border: 1px solid black; */
+  /* top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, 0%); */
+  width: 100%;
+  height: 100%;
+  /* background-color: black; */
+}
+
+#collisionCanvas {
+  /* background-color: rgb(231, 26, 26); */
+  opacity: 0;
+}
