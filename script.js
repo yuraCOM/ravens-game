@@ -130,8 +130,6 @@ window.addEventListener("load", function (event) {
       this.hasTrial = Math.random() > 0.5; // 0.5 дым у половины
     }
     update(deltaTime) {
-      start ? planeSounds() : planeSoundsStop();
-
       if (this.y < 0 || this.y > CANVAS_HEIGHT - this.height) {
         this.directionY = this.directionY * -1;
       }
@@ -168,6 +166,20 @@ window.addEventListener("load", function (event) {
         this.width,
         this.height
       );
+    }
+    sounds() {
+      function planeSounds() {
+        s02.play();
+        s01.play();
+        s03.play();
+      }
+
+      function planeSoundsStop() {
+        s02.pause();
+        s01.pause();
+        s03.pause();
+      }
+      start ? planeSounds() : planeSoundsStop();
     }
   }
 
@@ -329,6 +341,9 @@ window.addEventListener("load", function (event) {
       obj.update(deltaTime)
     );
     [...particles, ...ravens, ...explosions].forEach((obj) => obj.draw());
+
+    [...ravens].forEach((obj) => obj.sounds());
+
     ravens = ravens.filter((obj) => !obj.markerForDelete);
     explosions = explosions.filter((obj) => !obj.markerForDeleteExp);
     particles = particles.filter((obj) => !obj.markerForDeletePar);
