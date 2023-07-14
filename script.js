@@ -173,7 +173,7 @@ window.addEventListener("load", function (event) {
   }
 
   // const raven = new Raven();
-  for (let i = 0; i < 35; i++) {
+  for (let i = 0; i < 18; i++) {
     ravensStart.push(new Raven());
   }
 
@@ -267,7 +267,7 @@ window.addEventListener("load", function (event) {
 
   window.addEventListener("click", function (event) {
     let detectPixelColor = collisionCtx.getImageData(event.x, event.y, 1, 1);
-    let pixColor = detectPixelColor.data;
+    console.log("detectPixelColor: ", detectPixelColor);
     ravens.forEach((obj) => {
       if (
         obj.randomColor[0] === pixColor[0] &&
