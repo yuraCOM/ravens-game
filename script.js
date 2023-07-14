@@ -267,7 +267,7 @@ window.addEventListener("load", function (event) {
 
   window.addEventListener("click", function (event) {
     let detectPixelColor = collisionCtx.getImageData(event.x, event.y, 1, 1);
-    console.log("detectPixelColor: ", detectPixelColor);
+    let pixColor = detectPixelColor.data;
     ravens.forEach((obj) => {
       if (
         obj.randomColor[0] === pixColor[0] &&
