@@ -10,15 +10,15 @@ window.addEventListener("load", function (event) {
 
   let s01 = new Audio();
   s01.src = "/s01.mp3";
-  s01.volume = 0.4;
+  s01.volume = 0.35;
 
   let s02 = new Audio();
   s02.src = "/s02.mp3";
-  s02.volume = 0.4;
+  s02.volume = 0.35;
 
   let s03 = new Audio();
   s03.src = "/s03.mp3";
-  s03.volume = 0.15;
+  s03.volume = 0.2;
 
   const startBtn = document.getElementById("start-btn");
   const pauseBtn = document.getElementById("pause-btn");
@@ -60,18 +60,6 @@ window.addEventListener("load", function (event) {
   resetBtn?.addEventListener("click", function () {
     location.replace(location.href);
   });
-
-  function planeSounds() {
-    s02.play();
-    s01.play();
-    s03.play();
-  }
-
-  function planeSoundsStop() {
-    s02.pause();
-    s01.pause();
-    s03.pause();
-  }
 
   const canvas = document.getElementById("canvas1");
   const ctx = canvas.getContext("2d", { willReadFrequently: true });
