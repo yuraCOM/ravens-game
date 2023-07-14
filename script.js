@@ -5,7 +5,7 @@ window.addEventListener("load", function (event) {
 
   let fonMuzic = new Audio();
   fonMuzic.src = "vagner.mp3";
-  fonMuzic.volume = 0.5;
+  fonMuzic.volume = 0.25;
   fonMuzic.muted = true;
 
   let s01 = new Audio();
@@ -37,10 +37,6 @@ window.addEventListener("load", function (event) {
       start = true;
       animate(0);
     }, 2000);
-
-    setTimeout(function () {
-      fonMuzic.volume = 0.15;
-    }, 3000);
   });
 
   pauseBtn?.addEventListener("click", function () {
