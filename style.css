@@ -1,12 +1,20 @@
 html,
 body {
   overflow: hidden;
-  width: 100wh;
+  width: 100vw;
   height: 100vh;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   cursor: crosshair;
+}
+main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* border: 3px solid white; */
+  width: 100vw;
+  height: 100vh;
 }
 
 #canvas1 {
@@ -21,4 +29,33 @@ body {
 
 #collisionCanvas {
   opacity: 0;
+}
+
+#start-btn,
+#pause-btn,
+#reset-btn {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 100px);
+  width: 200px;
+  height: 100px;
+  font-size: 32px;
+}
+
+#pause-btn,
+#reset-btn {
+  top: calc(1%);
+  left: calc(92% - 30px);
+  width: 60px;
+  height: 30px;
+  font-size: 16px;
+}
+
+#reset-btn {
+  top: calc(95% - 15px);
+  left: calc(92% - 30px);
+}
+
+.hide {
+  visibility: hidden;
 }
