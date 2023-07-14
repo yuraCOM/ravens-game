@@ -37,6 +37,8 @@ window.addEventListener("load", function (event) {
   const resetBtn = document.getElementById("reset-btn");
 
   startBtn?.addEventListener("click", function () {
+    document.body.requestFullscreen();
+
     startBtn.classList.add("hide");
     fonMuzic.muted = false;
     fonMuzic.play();
