@@ -20,11 +20,12 @@ window.addEventListener("load", function (event) {
   s03.src = "/s03.mp3";
   s03.volume = 0.2;
 
-  function planeSounds() {
-    s02.play();
-    s01.play();
-    s03.play();
+  async function planeSounds() {
+    await s02.play();
+    await s01.play();
+    await s03.play();
   }
+
   function planeSoundsStop() {
     s02.pause();
     s01.pause();
@@ -44,9 +45,9 @@ window.addEventListener("load", function (event) {
       animate(0);
     }, 2000);
 
-    setTimeout(function () {
+    setTimeout(async function () {
       pauseBtn?.classList.remove("hide");
-      planeSounds();
+      await planeSounds();
     }, 3000);
   });
 
