@@ -20,23 +20,34 @@ window.addEventListener("load", function (event) {
   s03.src = "/s03.mp3";
   s03.volume = 0.2;
 
+  function planeSounds() {
+    s02.play();
+    s01.play();
+    s03.play();
+  }
+  function planeSoundsStop() {
+    s02.pause();
+    s01.pause();
+    s03.pause();
+  }
+
   const startBtn = document.getElementById("start-btn");
   const pauseBtn = document.getElementById("pause-btn");
   const resetBtn = document.getElementById("reset-btn");
 
   startBtn?.addEventListener("click", function () {
     startBtn.classList.add("hide");
-    setTimeout(function () {
-      pauseBtn?.classList.remove("hide");
-    }, 3000);
-
     fonMuzic.muted = false;
     fonMuzic.play();
-
     setTimeout(function () {
       start = true;
       animate(0);
     }, 2000);
+
+    setTimeout(function () {
+      pauseBtn?.classList.remove("hide");
+      planeSounds();
+    }, 3000);
   });
 
   pauseBtn?.addEventListener("click", function () {
@@ -46,6 +57,7 @@ window.addEventListener("load", function (event) {
       fonMuzic.muted = false;
       fonMuzic.pause();
       start = false;
+      planeSoundsStop();
       animate(0);
     } else if (start === false) {
       resetBtn?.classList.add("hide");
@@ -53,6 +65,7 @@ window.addEventListener("load", function (event) {
       fonMuzic.play();
       pauseBtn.innerText = "Pause";
       start = true;
+      planeSounds();
       animate(0);
     }
   });
@@ -78,6 +91,7 @@ window.addEventListener("load", function (event) {
   let lastTime = 0;
 
   let ravens = [];
+  let ravensStart = [];
 
   let score = 0;
   ctx.font = "20px Impact";
@@ -155,23 +169,12 @@ window.addEventListener("load", function (event) {
         this.height
       );
     }
-    sounds() {
-      function planeSounds() {
-        s02.play();
-        s01.play();
-        s03.play();
-      }
-
-      function planeSoundsStop() {
-        s02.pause();
-        s01.pause();
-        s03.pause();
-      }
-      start ? planeSounds() : planeSoundsStop();
-    }
   }
 
-  const raven = new Raven();
+  // const raven = new Raven();
+  for (let i = 0; i < 85; i++) {
+    ravensStart.push(new Raven());
+  }
 
   // explosions ------------------------------------------------
   let explosions = [];
@@ -323,14 +326,17 @@ window.addEventListener("load", function (event) {
         return a.width - b.width;
       });
     }
+
     drawScore();
 
+    [...ravensStart].forEach((obj) => obj.update(deltaTime));
+    [...ravensStart].forEach((obj) => obj.draw());
+
+    //
     [...particles, ...ravens, ...explosions].forEach((obj) =>
       obj.update(deltaTime)
     );
     [...particles, ...ravens, ...explosions].forEach((obj) => obj.draw());
-
-    [...ravens].forEach((obj) => obj.sounds());
 
     ravens = ravens.filter((obj) => !obj.markerForDelete);
     explosions = explosions.filter((obj) => !obj.markerForDeleteExp);
