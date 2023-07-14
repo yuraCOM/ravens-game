@@ -9,15 +9,15 @@ window.addEventListener("load", function (event) {
   fonMuzic.muted = true;
 
   let s01 = new Audio();
-  s01.src = "/s01.mp3";
-  s01.volume = 0.35;
+  s01.src = "s01.mp3";
+  s01.volume = 0.3;
 
   let s02 = new Audio();
-  s02.src = "/s02.mp3";
-  s02.volume = 0.35;
+  s02.src = "s02.mp3";
+  s02.volume = 0.3;
 
   let s03 = new Audio();
-  s03.src = "/s03.mp3";
+  s03.src = "s03.mp3";
   s03.volume = 0.2;
 
   async function planeSounds() {
@@ -173,7 +173,7 @@ window.addEventListener("load", function (event) {
   }
 
   // const raven = new Raven();
-  for (let i = 0; i < 85; i++) {
+  for (let i = 0; i < 35; i++) {
     ravensStart.push(new Raven());
   }
 
@@ -332,6 +332,7 @@ window.addEventListener("load", function (event) {
 
     [...ravensStart].forEach((obj) => obj.update(deltaTime));
     [...ravensStart].forEach((obj) => obj.draw());
+    ravensStart = ravensStart.filter((obj) => !obj.markerForDelete);
 
     //
     [...particles, ...ravens, ...explosions].forEach((obj) =>
